@@ -1,64 +1,88 @@
-import { GraduationCap, Briefcase, Code, Award, Calendar } from 'lucide-react';
+import { GraduationCap, Briefcase, Scale, Award, Calendar, BookOpen, Users, Trophy } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 
 const ResumeSection = () => {
   const education = [
     {
-      institution: 'Stanford University',
-      degree: 'Bachelor of Science in Computer Science',
-      period: '2022 - 2026',
-      gpa: '3.8/4.0',
-      achievements: ['Dean\'s List', 'CS Department Scholarship'],
+      institution: 'Harvard Law School',
+      degree: 'Juris Doctor (J.D.)',
+      period: '2015 - 2018',
+      gpa: 'Magna Cum Laude',
+      achievements: ['Harvard Law Review - Senior Editor', 'Moot Court Championship Winner', 'Dean\'s List - All Semesters'],
     },
     {
-      institution: 'Lincoln High School',
-      degree: 'High School Diploma',
-      period: '2018 - 2022',
-      gpa: '4.0/4.0',
-      achievements: ['Valedictorian', 'National Merit Scholar'],
+      institution: 'Yale University',
+      degree: 'Bachelor of Arts in Political Science',
+      period: '2011 - 2015',
+      gpa: 'Summa Cum Laude',
+      achievements: ['Phi Beta Kappa Honor Society', 'Outstanding Senior Thesis Award', 'Student Government President'],
     },
   ];
 
   const experience = [
     {
-      company: 'TechStart Inc.',
-      position: 'Frontend Developer Intern',
-      period: 'Jun 2024 - Aug 2024',
-      description: 'Developed responsive web applications using React and TypeScript. Collaborated with design team to implement pixel-perfect UI components.',
-      achievements: ['Improved page load speed by 40%', 'Built 15+ reusable components'],
+      company: 'Morrison & Associates Law Firm',
+      position: 'Senior Associate Attorney',
+      period: '2020 - Present',
+      description: 'Lead counsel for complex corporate litigation and contract disputes. Manage high-value cases exceeding $50M. Mentor junior attorneys and oversee legal research teams.',
+      achievements: ['98% case success rate', 'Secured $15M settlement in landmark case', 'Recognized as Rising Star by Super Lawyers'],
     },
     {
-      company: 'University Research Lab',
-      position: 'Research Assistant',
-      period: 'Sep 2023 - Present',
-      description: 'Working on machine learning projects focusing on natural language processing. Contributing to research papers and implementing ML algorithms.',
-      achievements: ['Published 2 research papers', 'Developed novel NLP model'],
+      company: 'Federal District Court',
+      position: 'Judicial Clerk',
+      period: '2018 - 2020',
+      description: 'Assisted federal judge with case analysis, legal research, and opinion drafting. Gained extensive experience in federal litigation procedures and constitutional law.',
+      achievements: ['Drafted 50+ judicial opinions', 'Recognized for exceptional legal analysis', 'Recommended for federal clerkship program'],
     },
   ];
 
-  const skills = [
-    { name: 'JavaScript/TypeScript', level: 90 },
-    { name: 'React & Next.js', level: 85 },
-    { name: 'Python', level: 88 },
-    { name: 'Node.js', level: 80 },
-    { name: 'Database Design', level: 75 },
-    { name: 'Machine Learning', level: 70 },
+  const practiceAreas = [
+    { name: 'Corporate Law', experience: '5+ Years' },
+    { name: 'Contract Litigation', experience: '4+ Years' },
+    { name: 'Mergers & Acquisitions', experience: '3+ Years' },
+    { name: 'Employment Law', experience: '4+ Years' },
+    { name: 'Intellectual Property', experience: '2+ Years' },
+    { name: 'Real Estate Law', experience: '3+ Years' },
   ];
 
-  const technologies = [
-    'React', 'TypeScript', 'Python', 'Node.js', 'PostgreSQL', 'MongoDB',
-    'Docker', 'AWS', 'Git', 'Figma', 'TensorFlow', 'PyTorch',
+  const certifications = [
+    'Licensed to Practice - New York State Bar',
+    'Licensed to Practice - Federal Courts',
+    'Certified Mediator - Alternative Dispute Resolution',
+    'Corporate Governance Certification',
+    'Data Privacy Law Specialist',
+    'International Business Law Certificate',
+  ];
+
+  const notableCases = [
+    {
+      title: 'Tech Corp vs. Innovation Ltd.',
+      type: 'Corporate Litigation',
+      outcome: '$15M Settlement',
+      description: 'Successfully represented plaintiff in complex intellectual property dispute.',
+    },
+    {
+      title: 'State Employment Commission Case',
+      type: 'Employment Law',
+      outcome: 'Policy Change',
+      description: 'Landmark case that established new precedent for workplace discrimination claims.',
+    },
+    {
+      title: 'Global Merger & Acquisition',
+      type: 'M&A Transaction',
+      outcome: '$500M Deal',
+      description: 'Led legal team for multinational acquisition involving complex regulatory compliance.',
+    },
   ];
 
   return (
-    <section id="resume" className="section-padding bg-muted/30">
+    <section id="resume" className="section-padding-reduced bg-muted/30">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Resume</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Professional Background</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            My educational background, professional experience, and technical skills
+            My legal education, professional experience, and areas of expertise
           </p>
         </div>
 
@@ -83,7 +107,7 @@ const ResumeSection = () => {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm mb-3">GPA: {edu.gpa}</p>
+                    <p className="text-sm mb-3">Honors: {edu.gpa}</p>
                     <div className="space-y-1">
                       {edu.achievements.map((achievement, i) => (
                         <div key={i} className="flex items-center gap-2">
@@ -134,47 +158,72 @@ const ResumeSection = () => {
           </div>
         </div>
 
-        {/* Skills Section */}
+        {/* Notable Cases Section */}
+        <div className="animate-fade-in mb-12">
+          <div className="flex items-center gap-3 mb-8 justify-center">
+            <Users className="h-8 w-8 text-primary" />
+            <h3 className="text-2xl font-semibold">Notable Cases</h3>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {notableCases.map((case_, index) => (
+              <Card key={index} className="transition-smooth hover:card-shadow">
+                <CardHeader>
+                  <CardTitle className="text-lg">{case_.title}</CardTitle>
+                  <div className="flex items-center justify-between">
+                    <Badge variant="outline">{case_.type}</Badge>
+                    <span className="text-sm font-semibold text-primary">{case_.outcome}</span>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{case_.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Practice Areas Section */}
         <div className="animate-slide-up">
           <div className="flex items-center gap-3 mb-8 justify-center">
-            <Code className="h-8 w-8 text-primary" />
-            <h3 className="text-2xl font-semibold">Skills & Technologies</h3>
+            <Scale className="h-8 w-8 text-primary" />
+            <h3 className="text-2xl font-semibold">Practice Areas & Expertise</h3>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* Skill Levels */}
+            {/* Practice Areas */}
             <Card>
               <CardHeader>
-                <CardTitle>Technical Proficiency</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-primary" />
+                  Areas of Practice
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                {skills.map((skill, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <Progress value={skill.level} className="h-2" />
+              <CardContent className="space-y-4">
+                {practiceAreas.map((area, index) => (
+                  <div key={index} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
+                    <span className="font-medium">{area.name}</span>
+                    <Badge variant="secondary">{area.experience}</Badge>
                   </div>
                 ))}
               </CardContent>
             </Card>
 
-            {/* Technologies */}
+            {/* Certifications */}
             <Card>
               <CardHeader>
-                <CardTitle>Technologies & Tools</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <Trophy className="h-5 w-5 text-primary" />
+                  Licenses & Certifications
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {technologies.map((tech, index) => (
-                    <Badge 
-                      key={index} 
-                      variant="secondary" 
-                      className="transition-smooth hover:bg-primary hover:text-primary-foreground"
-                    >
-                      {tech}
-                    </Badge>
+                <div className="space-y-3">
+                  {certifications.map((cert, index) => (
+                    <div key={index} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                      <Award className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-sm">{cert}</span>
+                    </div>
                   ))}
                 </div>
               </CardContent>

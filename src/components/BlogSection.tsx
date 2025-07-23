@@ -1,53 +1,53 @@
-import { ExternalLink, Calendar, User, MessageCircle, Heart } from 'lucide-react';
+import { ExternalLink, Calendar, User, MessageCircle, Heart, Scale, BookOpen, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 const BlogSection = () => {
-  const blogPosts = [
+  const legalArticles = [
     {
-      title: 'Building Scalable React Applications with Modern Architecture',
-      excerpt: 'Explore the latest patterns and best practices for creating maintainable React applications that can grow with your team and user base.',
+      title: 'Understanding Corporate Compliance in 2024: New Regulations',
+      excerpt: 'A comprehensive guide to the latest corporate compliance requirements and how businesses can ensure they meet all regulatory standards.',
       date: '2024-03-15',
-      author: 'Alex Morgan',
+      author: 'John Doe',
       readTime: '8 min read',
-      tags: ['React', 'Architecture', 'JavaScript'],
+      tags: ['Corporate Law', 'Compliance', 'Business Law'],
       likes: 42,
       comments: 8,
       link: '#',
       featured: true,
     },
     {
-      title: 'Machine Learning in Web Development: A Practical Guide',
-      excerpt: 'How to integrate machine learning models into web applications using TensorFlow.js and create intelligent user experiences.',
+      title: 'Employee Rights in the Digital Age: Remote Work Legal Framework',
+      excerpt: 'Exploring the evolving legal landscape of remote work, employee rights, and employer obligations in the post-pandemic era.',
       date: '2024-02-28',
-      author: 'Alex Morgan',
+      author: 'John Doe',
       readTime: '12 min read',
-      tags: ['Machine Learning', 'TensorFlow', 'AI'],
+      tags: ['Employment Law', 'Remote Work', 'Digital Rights'],
       likes: 67,
       comments: 15,
       link: '#',
       featured: false,
     },
     {
-      title: 'The Future of TypeScript: What\'s Coming in 2024',
-      excerpt: 'A deep dive into the upcoming TypeScript features and how they will revolutionize the way we write type-safe JavaScript.',
+      title: 'Contract Law Updates: Key Changes Every Business Should Know',
+      excerpt: 'Recent developments in contract law and their implications for businesses, including digital signatures and electronic contracts.',
       date: '2024-02-10',
-      author: 'Alex Morgan',
+      author: 'John Doe',
       readTime: '6 min read',
-      tags: ['TypeScript', 'JavaScript', 'Programming'],
+      tags: ['Contract Law', 'Business', 'Legal Updates'],
       likes: 89,
       comments: 23,
       link: '#',
       featured: false,
     },
     {
-      title: 'Optimizing Database Performance for Modern Web Apps',
-      excerpt: 'Learn advanced techniques for database optimization, indexing strategies, and query performance tuning in PostgreSQL and MongoDB.',
+      title: 'Intellectual Property Protection for Small Businesses',
+      excerpt: 'Essential strategies for protecting your intellectual property, trademarks, and copyrights in an increasingly competitive market.',
       date: '2024-01-22',
-      author: 'Alex Morgan',
+      author: 'John Doe',
       readTime: '10 min read',
-      tags: ['Database', 'Performance', 'PostgreSQL'],
+      tags: ['IP Law', 'Small Business', 'Protection'],
       likes: 34,
       comments: 7,
       link: '#',
@@ -55,25 +55,25 @@ const BlogSection = () => {
     },
   ];
 
-  const linkedInPosts = [
+  const professionalUpdates = [
     {
-      type: 'Achievement',
-      title: 'Completed Advanced React Course',
-      content: 'Just finished the Advanced React Patterns course by Kent C. Dodds! Learned so much about compound components, render props, and advanced hooks patterns.',
+      type: 'Legal Victory',
+      title: 'Successful $25M Class Action Settlement',
+      content: 'Proud to announce a significant victory for our clients in the recent class action lawsuit. This settlement will provide much-needed compensation to affected parties.',
       date: '2024-03-20',
       engagement: { likes: 156, comments: 24 },
     },
     {
-      type: 'Project Share',
-      title: 'Open Source Contribution',
-      content: 'Excited to share that my PR to improve accessibility in the React Router library has been merged! Small contributions can make a big impact. 🚀',
+      type: 'Industry Insight',
+      title: 'New Employment Law Changes',
+      content: 'Important updates to employment law effective this quarter. All employers should review their policies to ensure compliance with the new regulations. �',
       date: '2024-03-10',
       engagement: { likes: 203, comments: 31 },
     },
     {
-      type: 'Thought Leadership',
-      title: 'The Importance of Code Reviews',
-      content: 'Code reviews aren\'t just about catching bugs—they\'re about knowledge sharing, mentorship, and building better software together. What\'s your favorite code review tip?',
+      type: 'Client Education',
+      title: 'Understanding Your Rights as a Consumer',
+      content: 'Knowledge is power. Understanding your consumer rights can protect you from unfair practices and help you make informed decisions. What questions do you have about consumer protection?',
       date: '2024-02-25',
       engagement: { likes: 89, comments: 42 },
     },
@@ -83,21 +83,22 @@ const BlogSection = () => {
     <section id="blog" className="section-padding">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Blog & Insights</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Legal Insights & Publications</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Thoughts on technology, development practices, and industry trends
+            Expert legal commentary, industry updates, and client education resources
           </p>
         </div>
 
         {/* Featured Articles */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-            <span>Featured Articles</span>
-            <Badge variant="secondary">Medium & Dev.to</Badge>
+            <Scale className="h-6 w-6 text-primary" />
+            <span>Featured Legal Articles</span>
+            <Badge variant="secondary">Law Review & Publications</Badge>
           </h3>
           
           <div className="grid lg:grid-cols-2 gap-8">
-            {blogPosts.map((post, index) => (
+            {legalArticles.map((post, index) => (
               <Card 
                 key={index} 
                 className={`transition-smooth hover:card-shadow cursor-pointer animate-fade-in ${
@@ -167,12 +168,13 @@ const BlogSection = () => {
         {/* LinkedIn Posts */}
         <div className="animate-slide-up">
           <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
-            <span>Recent LinkedIn Activity</span>
-            <Badge variant="secondary">Professional Updates</Badge>
+            <BookOpen className="h-6 w-6 text-accent" />
+            <span>Recent Professional Updates</span>
+            <Badge variant="secondary">LinkedIn & Industry News</Badge>
           </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {linkedInPosts.map((post, index) => (
+            {professionalUpdates.map((post, index) => (
               <Card 
                 key={index} 
                 className="transition-smooth hover:card-shadow animate-scale-in"
@@ -210,10 +212,75 @@ const BlogSection = () => {
           </div>
         </div>
 
+        {/* Client Resources Section */}
+        <div className="mb-16 mt-16 animate-slide-up">
+          <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+            <AlertCircle className="h-6 w-6 text-secondary" />
+            <span>Client Resources</span>
+            <Badge variant="secondary">Legal Guides & FAQs</Badge>
+          </h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="transition-smooth hover:card-shadow hover:scale-105">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <Scale className="h-5 w-5 text-primary" />
+                  Legal FAQ
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Common legal questions answered by our team of experts.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  View FAQ
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-smooth hover:card-shadow hover:scale-105">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <BookOpen className="h-5 w-5 text-accent" />
+                  Legal Guides
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Comprehensive guides to help you understand your legal rights.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Download Guides
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="transition-smooth hover:card-shadow hover:scale-105">
+              <CardHeader>
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <AlertCircle className="h-5 w-5 text-secondary" />
+                  Emergency Contacts
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Important legal contacts and emergency legal assistance.
+                </p>
+                <Button variant="outline" size="sm" className="w-full">
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Get Help Now
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         {/* Call to Action */}
         <div className="text-center mt-12">
           <Button variant="outline" size="lg" className="transition-smooth hover:scale-105">
-            View All Articles
+            View All Legal Resources
           </Button>
         </div>
       </div>
