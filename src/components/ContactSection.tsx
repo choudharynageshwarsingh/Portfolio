@@ -20,22 +20,46 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent successfully!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    
-    setFormData({ fullName: '', email: '', message: '' });
-    setIsSubmitting(false);
+    try {
+      // Create FormData for Netlify Forms
+      const netlifyFormData = new FormData();
+      netlifyFormData.append('form-name', 'contact');
+      netlifyFormData.append('full-name', formData.fullName);
+      netlifyFormData.append('email', formData.email);
+      netlifyFormData.append('message', formData.message);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(netlifyFormData as any).toString()
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for reaching out. I'll get back to you soon.",
+        });
+        setFormData({ fullName: '', email: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    const stateKey = name === 'full-name' ? 'fullName' : name;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [stateKey]: value
     }));
   };
 
@@ -84,14 +108,28 @@ const ContactSection = () => {
                 <CardTitle className="text-2xl">Send a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                >
+                  {/* Hidden input for Netlify */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  
+                  {/* Honeypot field for spam protection */}
+                  <div style={{ display: 'none' }}>
+                    <input name="bot-field" />
+                  </div>
                   <div>
                     <Label htmlFor="fullName" className="text-sm font-medium">
                       Full Name
                     </Label>
                     <Input
                       id="fullName"
-                      name="fullName"
+                      name="full-name"
                       value={formData.fullName}
                       onChange={handleChange}
                       required
