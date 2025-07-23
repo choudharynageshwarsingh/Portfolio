@@ -218,7 +218,7 @@ const ContactSection = () => {
             {/* Left Side - Copyright */}
             <div className="text-center md:text-left">
               <p className="text-xs text-muted-foreground">
-                © 2025 John Doe. All rights reserved. | Attorney at Law - Licensed to practice in New York
+                © 2025 Nageshwar Singh. All rights reserved. | Attorney at Law - Licensed to practice in India
               </p>
             </div>
 
@@ -232,7 +232,7 @@ const ContactSection = () => {
                 
                 {/* LinkedIn Link */}
                 <a
-                  href="https://linkedin.com/in/your-linkedin"
+                  href="https://linkedin.com/in/am-phougatsahil"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 hover:text-blue-600 transition-smooth"
@@ -243,7 +243,7 @@ const ContactSection = () => {
                 
                 {/* Email Link */}
                 <a
-                  href="mailto:developer@email.com"
+                  href="mailto:phogatakshat98@gmail.com"
                   className="flex items-center gap-1 hover:text-primary transition-smooth"
                 >
                   <Mail className="h-3 w-3" />
